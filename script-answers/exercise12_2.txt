@@ -1,0 +1,46 @@
+Script started on 2024-11-16 00:08:25+02:00
+imbartis@DellXPS15IB:~$ docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+
+ff65ddf9395b: Pulling fs layer
+ff65ddf9395b: Downloading [=>                                                 ]  1.049MB/29.75MB
+ff65ddf9395b: Downloading [===>                                               ]  2.097MB/29.75MB
+ff65ddf9395b: Downloading [=====>                                             ]  3.146MB/29.75MB
+ff65ddf9395b: Downloading [=======>                                           ]  4.194MB/29.75MB
+ff65ddf9395b: Downloading [========>                                          ]  5.243MB/29.75MB
+ff65ddf9395b: Downloading [==========>                                        ]  6.291MB/29.75MB
+ff65ddf9395b: Downloading [============>                                      ]   7.34MB/29.75MB
+ff65ddf9395b: Downloading [==============>                                    ]  8.389MB/29.75MB
+ff65ddf9395b: Downloading [===============>                                   ]  9.437MB/29.75MB
+ff65ddf9395b: Downloading [=================>                                 ]  10.49MB/29.75MB
+ff65ddf9395b: Downloading [===================>                               ]  11.53MB/29.75MB
+ff65ddf9395b: Downloading [=====================>                             ]  12.58MB/29.75MB
+ff65ddf9395b: Downloading [======================>                            ]  13.63MB/29.75MB
+ff65ddf9395b: Downloading [========================>                          ]  14.68MB/29.75MB
+ff65ddf9395b: Downloading [==========================>                        ]  15.73MB/29.75MB
+ff65ddf9395b: Downloading [============================>                      ]  16.78MB/29.75MB
+ff65ddf9395b: Downloading [=============================>                     ]  17.83MB/29.75MB
+ff65ddf9395b: Downloading [===============================>                   ]  18.87MB/29.75MB
+ff65ddf9395b: Downloading [=================================>                 ]  19.92MB/29.75MB
+ff65ddf9395b: Downloading [===================================>               ]  20.97MB/29.75MB
+ff65ddf9395b: Downloading [=====================================>             ]  22.02MB/29.75MB
+ff65ddf9395b: Downloading [======================================>            ]  23.07MB/29.75MB
+ff65ddf9395b: Downloading [========================================>          ]  24.12MB/29.75MB
+ff65ddf9395b: Downloading [==========================================>        ]  25.17MB/29.75MB
+ff65ddf9395b: Downloading [============================================>      ]  26.21MB/29.75MB
+ff65ddf9395b: Downloading [=============================================>     ]  27.26MB/29.75MB
+ff65ddf9395b: Downloading [===============================================>   ]  28.31MB/29.75MB
+ff65ddf9395b: Downloading [=================================================> ]  29.36MB/29.75MB
+ff65ddf9395b: Download complete
+Digest: sha256:99c35190e22d294cdace2783ac55effc69d32896daaa265f0bbedbcde4fbe3e5
+Status: Downloaded newer image for ubuntu:latest
+root@7aaee3997cac:/# sudo mkdir -p /usr/src/app
+bash: sudo: command not found
+root@7aaee3997cac:/# su
+root@7aaee3997cac:/# mkdir -p /usr/src/app
+root@7aaee3997cac:/# touch /usr/src/app/index.js
+root@7aaee3997cac:/# exit
+exit
+root@7aaee3997cac:/# exit
+exit
