@@ -1,0 +1,33 @@
+Script started on 2024-11-16 21:38:41+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+# curl -sL https://deb.nodesource.com/setup_20.x | bash
+2024-11-16 21:38:51 - Installing pre-requisites
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Reading package lists... 0%
+Reading package lists... 0%
+Reading package lists... 0%
+Reading package lists... 0%
+Reading package lists... Done
+Building dependency tree... 0%
+Building dependency tree... 0%
+Building dependency tree... 50%
+Building dependency tree... Done
+Reading state information... 0%
+Reading state information... 4%
+Reading state information... Done
+ca-certificates is already the newest version (20240203).
+ca-certificates set to manually installed.
+curl is already the newest version (8.5.0-2ubuntu10.4).
+The following additional packages will be installed:
+  adduser dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf gpgsm keyboxd libksba8 libreadline8t64
+  libsqlite3-0 pinentry-curses readline-common
+Suggested packages:
+  liblocale-gettext-perl perl cron quota ecryptfs-utils dbus-user-session libpam-systemd pinentry-gnome3 tor
+  parcimonie xloadimage gpg-wks-server scdaemon pinentry-doc readline-doc
+The following NEW packages will be installed:
+  adduser apt-transport-https dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf gpgsm keyboxd
+  libksba8 libreadline8t64 libsqlite3-0 pinentry-curses readline-common
+0 upgraded, 17 newly installed, 0 to remove and 6 not upgraded.
+Need to get 3305 kB of archives.
+After this operation, 8326 kB of additional disk space will be used.
