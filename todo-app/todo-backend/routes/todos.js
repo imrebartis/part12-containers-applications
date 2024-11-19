@@ -29,18 +29,24 @@ const findByIdMiddleware = async (req, res, next) => {
 
 /* DELETE todo. */
 singleRouter.delete('/', async (req, res) => {
-  await req.todo.delete()  
+  await req.todo.delete();
   res.sendStatus(200);
 });
 
 /* GET todo. */
 singleRouter.get('/', async (req, res) => {
-  res.sendStatus(405); // Implement this
+  res.send(req.todo);
 });
 
 /* PUT todo. */
 singleRouter.put('/', async (req, res) => {
-  res.sendStatus(405); // Implement this
+  try {
+    Object.assign(req.todo, req.body);
+    await req.todo.save();
+    res.send(req.todo);
+  } catch (error) {
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
 });
 
 router.use('/:id', findByIdMiddleware, singleRouter)

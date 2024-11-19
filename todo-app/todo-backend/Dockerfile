@@ -8,4 +8,6 @@ RUN npm ci
 
 USER node
 
+VOLUME /data/db /data/configdb
+
 CMD npm start
