@@ -1,0 +1,58 @@
+mongosh -u root -p example
+
+test> show dbs
+
+admin         100.00 KiB
+config         72.00 KiB
+local          80.00 KiB
+the_database   72.00 KiB
+
+test> use the_database
+
+switched to db the_database
+
+the_database> show collections
+
+todos
+
+the_database> db.todos.find({})
+
+[
+  {
+    _id: ObjectId('673bba394ed6aef600c1c18c'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('673bba394ed6aef600c1c18d'),
+    text: 'Learn about coding',
+    done: false
+  }
+]
+
+the_database> db.todos.insertOne({text: "Increase the number of tools in my toolbelt", done: false })
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('673e525fa8e3b30f77c1c18c')
+}
+
+the_database> db.todos.find({})
+
+[
+  {
+    _id: ObjectId('673bba394ed6aef600c1c18c'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('673bba394ed6aef600c1c18d'),
+    text: 'Learn about coding',
+    done: false
+  },
+  {
+    _id: ObjectId('673e525fa8e3b30f77c1c18c'),
+    text: 'Increase the number of tools in my toolbelt',
+    done: false
+  }
+]
