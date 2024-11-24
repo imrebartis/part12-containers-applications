@@ -61,4 +61,7 @@ typings/
 .next
 
 # MongoDB database files
-/data/db
+mongo_data/
+
+# Redis database files
+redis_data/
