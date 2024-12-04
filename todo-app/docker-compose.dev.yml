@@ -6,9 +6,21 @@ services:
       dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
     volumes:
       - ./todo-frontend:/usr/src/app
-    ports:
-      - 5173:5173
     container_name: todo-front-dev # This will name the container todo-front-dev
+
+  debug-helper:
+    image: busybox
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - app # wait for the frontend container to be started
+      - server # wait for the backend container to be started
 
   mongo:
     image: mongo
@@ -18,9 +30,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: the_database
-
     volumes:
-      - ./todo-backend/todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - ./mongo_data:/data/db
     container_name: mongo
 
@@ -38,29 +49,15 @@ services:
     build:
       context: ./todo-backend
       dockerfile: dev.Dockerfile
-    ports:
-      - 3000:3000
     environment:
-      - REDIS_URL=//redis:6379
-      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
-
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
     volumes:
       - ./todo-backend:/usr/src/app
     depends_on:
       - mongo
       - redis
     container_name: todo-back-dev
-
-  nginx:
-    image: nginx:1.20.1
-    volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
-    ports:
-      - 8080:80
-    container_name: reverse-proxy
-    depends_on:
-      - app # wait for the frontend container to be started
-      - server # wait for the backend container to be started
 
 volumes:
   mongo_data:

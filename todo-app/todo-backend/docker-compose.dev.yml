@@ -7,10 +7,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: the_database
-
     volumes:
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - ./mongo_data:/data/db
+    container_name: mongo
 
   redis:
     image: redis
@@ -19,23 +19,27 @@ services:
     command: [ 'redis-server', '--appendonly', 'yes' ]
     volumes:
       - ./redis_data:/data
+    container_name: redis
 
   server:
     image: express_server
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     ports:
       - 3000:3000
     environment:
-      - REDIS_URL=//redis:6379
-      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
-
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
     volumes:
       - .:/usr/src/app
     depends_on:
       - mongo
       - redis
+    container_name: express_server
 
 volumes:
   mongo_data:
+    driver: local
+  redis_data:
+    driver: local
