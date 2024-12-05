@@ -29,7 +29,7 @@ services:
       - 3000:3000
     environment:
       - REDIS_URL=redis://redis:6379
-      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
+      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     volumes:
       - .:/usr/src/app
     depends_on:
