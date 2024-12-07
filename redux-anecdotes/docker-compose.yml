@@ -1,0 +1,36 @@
+services:
+  app:
+    image: ra-front
+    build:
+      context: ./redux-anecdotes-frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./redux-anecdotes-frontend:/usr/src/app
+    ports:
+      - 5173:80
+    container_name: ra-front
+
+  debug-helper:
+    image: busybox
+
+  server:
+    image: ra-back
+    build:
+      context: ./redux-anecdotes-backend
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./redux-anecdotes-backend:/usr/src/app
+    container_name: ra-back
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - app
+      - server
