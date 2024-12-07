@@ -1,0 +1,19 @@
+{
+  "name": "redux-anecdotes-backend",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "nodemon server.cjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

@@ -1,0 +1,36 @@
+services:
+  app:
+    image: ra-front-dev
+    build:
+      context: ./redux-anecdotes-frontend
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./redux-anecdotes-frontend:/usr/src/app
+    ports:
+      - 5173:5173
+    container_name: ra-front-dev # This will name the container ra-front-dev
+
+  debug-helper:
+    image: busybox
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - app # wait for the frontend container to be started
+      - server # wait for the backend container to be started
+
+  server:
+    image: ra-back-dev
+    build:
+      context: ./redux-anecdotes-backend
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./redux-anecdotes-backend:/usr/src/app
+    container_name: ra-back-dev
